@@ -14,7 +14,8 @@ int CheckDecimal(const int n){
 
 int main() {
 
-    int n = 1;
+    int n = 0;
+    scanf("%d", &n);
     if (CheckDecimal(n)){
         printf("True\n");
     }
