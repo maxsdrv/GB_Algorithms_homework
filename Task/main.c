@@ -34,18 +34,21 @@ void DecToBin(int n){
 int main() {
 /* Task1  Реализовать функцию перевода чисел из десятичной системы
  * в двоичную, используя рекурсию.  */
-    /*int user_number = 0;
+    int user_number = 0;
     printf("Please, enter the number: \n");
     scanf("%d", &user_number);
-    DecToBin(user_number);*/
+    DecToBin(user_number);
 
 /*Task2 Реализовать функцию возведения числа [a] в степень [b]: */
-    int a = 5, b = 3;
+    int a = 0, b = 0;
+    printf("Please enter number and exponent: \n");
+    scanf("%d%d", &a, &b);
     int result = Pow(a, b);
-    printf("%d", result);
+    printf("%d%s%d%s%d", a, " ^ ", b, " = ", result);
     printf("\n");
 /* Recursively*/
-    printf("%d", RecPow(a, b));
+    printf("Recursively: \n");
+    printf("%d%s%d%s%d", a, " ^ ", b, " = ", RecPow(a, b));
     printf("\n");
 
 /* Task3 Рекурсивно, используя свойство чётности степени
@@ -53,9 +56,17 @@ int main() {
  * основание возводится в квадрат, а показатель делится на два, а если
  * степень нечётная - результат умножается на основание, а показатель
  * уменьшается на единицу) */
-    int prop_a = 10, prop_b = 2;
+    int prop_a = 0, prop_b = 0;
+    printf("Please, enter numbers for PropertyPow function. \n");
+    scanf("%d%d", &prop_a, &prop_b);
     int prop_result = PropertyPow(prop_a, prop_b);
-    printf("%d\n", prop_result);
+    printf("Using parity property: \n");
+    printf("%d%s%d%s%d\n", prop_a, " ^ ", prop_b, " = ", prop_result);
+
+/* Task4 Реализовать нахождение количества маршрутов шахматного короля
+ * с препятствиями (где единица - это наличие препятствия,
+ * а ноль - свободная для хода клетка) */
+
 
     return 0;
 }
