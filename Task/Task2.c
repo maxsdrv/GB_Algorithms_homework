@@ -15,7 +15,7 @@ int main() {
 
     int n = 0;
     scanf("%d", &n);
-    if (CheckDecimal(n)){
+    if (CheckPrime(n)){
         printf("True\n");
     }
     else printf("False\n");
