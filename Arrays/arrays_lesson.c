@@ -83,9 +83,21 @@ void lesson_arrays() {
 
 }
 
-int main() {
+void TPC_algorithm() {
+    const int size_array = 10;
+    double* arrayInt = (int*) calloc(sizeof(int), size_array);
+    int y = 0;
 
+
+    free(arrayInt);
+}
+
+int main() {
+ /*Реализовать пузырьковую сортировку двумерного массива*/
    lesson_arrays();
+
+/*Реализовать алгоритм Трабба-Прадо-Кнута в коде на языке С*/
+   TPC_algorithm();
 
 
     return 0;
