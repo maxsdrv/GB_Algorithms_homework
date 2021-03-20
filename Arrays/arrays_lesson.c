@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 
 
 //Инициализируем 2-мерный массив
@@ -61,7 +62,7 @@ void sort2dIntArray(int** arr, const int row, const int col) {
 }
 
 //Функция для очистки выделенной памяти
-void freeAllocation(int** arr, const int row) {
+void freeAllocation2dArray(int** arr, const int row) {
     for (int i = 0; i < row; ++i) {
         free(arr[i]);
     }
@@ -72,32 +73,55 @@ void freeAllocation(int** arr, const int row) {
 void lesson_arrays() {
     const int row = 4;
     const int col = 5;
-    const int length = 10;
-    int** array = (int **) init2dIntArray(array, row, col);
+    int** array = init2dIntArray(array, row, col);
     fill2dIntArray(array, row, col, 100);
     print2dIntArray(array, row, col, 3);
     printf("\n");
     sort2dIntArray(array, row, col);
     print2dIntArray(array, row, col, 3);
-    freeAllocation(array, row);
+    freeAllocation2dArray(array, row);
 
 }
 
-void TPC_algorithm() {
-    const int size_array = 10;
-    double* arrayInt = (int*) calloc(sizeof(int), size_array);
-    int y = 0;
+
+double Func(double value) {
+    return sqrt(fabs(value)) + 5 * pow(value, 3);
+}
+
+double* testUserInput(double* arr, const int size) {
+    arr = (double*) calloc(sizeof(double), size);
+    for (int i = 0; i < size; ++i) {
+        *(arr + i) = i + 1 * 1; 
+    }
+    return arr;
+}
 
 
-    free(arrayInt);
+void TPK_algorithm() {
+    const int size_array = 11;
+    double* arrayDb; 
+    double y = 0;
+    arrayDb = testUserInput(arrayDb, size_array);
+    for (int i = 10; i >= 0; --i) {
+        y = Func(*(arrayDb + i));
+        if (y > 400) {
+            printf("%d Too Large\n", i);
+        }
+        else printf("%d %.16g\n", i, y);
+    }
+
+
+    free(arrayDb);
 }
 
 int main() {
  /*Реализовать пузырьковую сортировку двумерного массива*/
    lesson_arrays();
 
+   printf("\n");
+
 /*Реализовать алгоритм Трабба-Прадо-Кнута в коде на языке С*/
-   TPC_algorithm();
+   TPK_algorithm();
 
 
     return 0;
