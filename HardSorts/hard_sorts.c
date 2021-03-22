@@ -2,6 +2,7 @@
 
 #include "myarray.h"
 
+//Quick Sort 
 void qs(int* array, const int first, const int last) {
     int i = first;
     int j = last;
@@ -28,6 +29,7 @@ void qs(int* array, const int first, const int last) {
     if (first < j) qs(array, first, j);
 }
 
+//Sort Insert
 void sortInserts(int* arr, int len) {
     int temp = 0, pos = 0;
     for (int i = 1; i < len; ++i) {
@@ -41,12 +43,32 @@ void sortInserts(int* arr, int len) {
     }
 }
 
-void _quicksort(int *arr, int first, int last) {
-    int i = first; 
+int partition(int* arr, int first, int last) {
+    int i = first;
     int j = last;
-    const int redirect = 10;
-    const int size_arr = ++last;
-    printf("size arr = %d\n", size_arr);
+
+    int x = arr[(first + last) / 2]; 
+    
+}
+
+//The function will return the median of 3 elements
+int median(int f, int m, int l) {
+    if ((m < f && f < l) || (m > f && f > l)) return f;
+    if ((f < m && m < l) || (f > m && m > l)) return m;
+    return l; 
+}
+
+//Improved Quick Sort algorithm
+void _quicksort(int *arr, int first, int last) {
+    const int M = 10;
+    int med = median(arr[first], arr[(first + last) / 2], arr[last]);
+    if (last - first <= M) {
+        sortInserts(arr, ++last);
+    }
+    myswap(&arr[med], &arr[(first + last) / 2]);
+    int i = partition(arr, first, last);
+    _quicksort(arr, first, last);
+    _quicksort(arr, i + first, last);
 }
 
 void hard_sorts() {
