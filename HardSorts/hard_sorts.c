@@ -43,32 +43,33 @@ void sortInserts(int* arr, int len) {
     }
 }
 
-int partition(int* arr, int first, int last) {
-    int i = first;
-    int j = last;
 
-    int x = arr[(first + last) / 2]; 
-    
-}
 
 //The function will return the median of 3 elements
-int median(int f, int m, int l) {
+int median(const int f, const int m, const int l) {
     if ((m < f && f < l) || (m > f && f > l)) return f;
     if ((f < m && m < l) || (f > m && m > l)) return m;
-    return l; 
+    return l;
+}
+
+int getIndex(const int* arr, const int len, int index) {
+    for (int i = 0; i < len; ++i) {
+        if (arr[i] == index) {
+            index = i;
+        }
+    }
+    return index;
 }
 
 //Improved Quick Sort algorithm
-void _quicksort(int *arr, int first, int last) {
+void my_QuickSort(int *arr, int first, int last) {
     const int M = 10;
     int med = median(arr[first], arr[(first + last) / 2], arr[last]);
     if (last - first <= M) {
         sortInserts(arr, ++last);
     }
-    myswap(&arr[med], &arr[(first + last) / 2]);
-    int i = partition(arr, first, last);
-    _quicksort(arr, first, last);
-    _quicksort(arr, i + first, last);
+    myswap(&arr[getIndex(arr, last, med)], &arr[(first + last) / 2]);
+    qs(arr, first, last);
 }
 
 void hard_sorts() {
@@ -76,11 +77,10 @@ void hard_sorts() {
     int* array = init(array, length);
     fill(array, length);
     print(array, length, 3);
-    // qs(array, 0, length - 1);
-    // sortInserts(array, length);
-    _quicksort(array, 0, length - 1);
+    my_QuickSort(array, 0, length - 1);
     print(array, length, 3);
-    
+
+    free(array);
 }
 
 int main() {
