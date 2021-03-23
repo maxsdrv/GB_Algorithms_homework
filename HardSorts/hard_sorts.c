@@ -77,6 +77,7 @@ void hard_sorts() {
     int* array = init(array, length);
     fill(array, length);
     print(array, length, 3);
+    /*Task1. Описать в коде улучшенный алгоритм быстрой сортировки - описана в видео "Быстрая Сортировка. Улучшения."*/
     my_QuickSort(array, 0, length - 1);
     print(array, length, 3);
 
