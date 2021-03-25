@@ -72,6 +72,42 @@ void my_QuickSort(int *arr, int first, int last) {
     qs(arr, first, last);
 }
 
+void BucketSort(int* arr, int length) {
+    const int max = length;
+    const int b = 10;
+    const int maxItem = 1000000000;
+    int buckets[b][max + 1];
+    for (int i = 0; i < b; ++i) {
+        buckets[i][max] = 0;
+    }
+    for (int digit = 1; digit < maxItem; digit *= 10) {
+        for (int i = 0; i < max; ++i) {
+            if (arr[i] % 2 == 0) {
+                int d = (arr[i] / digit) % b;
+
+                int counter = buckets[d][max];
+                buckets[d][counter] = arr[i];
+                counter++;
+                buckets[d][max] = counter;
+
+                arr[i] = -1;
+            }
+        }
+        int idx = 0;
+        for (int i = 0; i < b; ++i) {
+            for (int j = 0; j < buckets[i][max]; ++j) {
+                while (arr[idx] != -1) {
+                    idx++;
+                }
+                arr[idx] = buckets[i][j];
+            }
+            buckets[i][max] = 0;
+        }
+    }
+    
+}
+
+
 void hard_sorts() {
     const int length = 20;
     int* array = init(array, length);
@@ -81,7 +117,15 @@ void hard_sorts() {
     my_QuickSort(array, 0, length - 1);
     print(array, length, 3);
 
+    /*Task2.  Сортировать в массиве целых положительных чисел только чётные числа, нечётные оставив на своих местах
+     при помощи алгоритма блочной сортировки */
+    fill(array, length);
+    print(array, length, 3);
+    BucketSort(array, length);
+    print(array, length, 3);
+
     free(array);
+
 }
 
 int main() {
