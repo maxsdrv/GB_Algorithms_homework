@@ -110,10 +110,10 @@ void PrintQueue(Auxiliary *a) {
 
 /* __________________________________________________________*/
 int top = -1;
-T Stack[Size];
+T Stack[sizeStack];
 
 bool PushStack(int data) {
-    if (top < Size) {
+    if (top < sizeStack) {
         Stack[++top] = data;
         return true;
     }
