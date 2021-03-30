@@ -19,3 +19,4 @@ bool PushStack(Stack *stack, T value);
 T PopStack(Stack *stack);    
 void printOneLinkCharNode(Node *n);
 void printOneLinkCharStack(Stack *stack);
+bool isEmpty(Stack *stack);

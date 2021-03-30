@@ -56,7 +56,12 @@ void printOneLinkCharStack(Stack *stack) {
     printf(" Size: %d \n", stack->size);
 }
 
-
+bool isEmpty(Stack *stack) {
+    if (stack->size == 0) {
+        return true;
+    }
+    return false;
+}
 
 
 
