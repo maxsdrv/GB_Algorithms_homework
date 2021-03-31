@@ -31,7 +31,10 @@ bool CorrectBrackets(char* brackets) {
     if (isEmpty(st)) {
         return true;
     }
-    else return false;
+    else {
+        free(st);
+        return false;
+    {
 }
 
 int main() {
