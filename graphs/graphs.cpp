@@ -7,13 +7,12 @@ using namespace std;
 
 
 int main() {
-    myStack<int> s1;
-    s1.pushStack( 10);
-    s1.pushStack(20);
-    s1.pushStack(30);
+    auto *stack = new Stack;
+    stack->pushStack(stack, 10);
+    stack->pushStack(stack, 20);
+    stack->Displayed(stack);
 
-    s1.PrintStack(s1);
-
+    delete stack;
 
     return 0;
 }
